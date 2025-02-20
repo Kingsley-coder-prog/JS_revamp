@@ -1,18 +1,20 @@
+// Promise.resolve("asyncfail")
+//   .then((response) => {
+//     throw new Error("#1 fail");
+//     return response;
+//   })
+//   .then((response) => {
+//     console.log(response);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+// });
 
-export default function fight() {
-    return 'fight!';
-}
-
-function fail() {
-    try {
-        throw new Error('fail');
-        console.log('fail');
-    } catch(error) {
-        console.log(error.message);
-    } finally {
-        console.log('finally run it!');
-        return 'still in business';
-    }
-}
-
-fail();
+(async function () {
+  try {
+    await Promise.reject("oopsie");
+  } catch (err) {
+    console.log(err);
+  }
+  console.log("This is still good!");
+})();
